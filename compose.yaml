@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  fastpaip-app:
+    build: .
+    volumes:
+      # Mount the application's source code for live-reloading
+      - ./src:/app/src
+      # Mount the plummy framework's source code from the sibling directory
+      - ./plummy:/plummy
