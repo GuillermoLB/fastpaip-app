@@ -24,7 +24,7 @@ requires-dist = [{ name = "plummy", directory = "../plummy" }]
 
 [[package]]
 name = "plummy"
-version = "0.1.0"
+version = "0.1.1"
 source = { directory = "../plummy" }
 dependencies = [
     { name = "pydantic" },
