@@ -14,11 +14,9 @@ from plummy.adapters import FunctionalProcessor
 
 # 2. Import configuration and concrete infrastructure
 from fastpaip_app.config.settings import settings
-from fastpaip_app.classifications.infrastructure.repositories import SQLClassificationRepository
-from fastpaip_app.infrastructure.gateways import OpenAIGateway
 
 # 3. Import handler builders from each domain's application layer
-from fastpaip_app.classifications.application.classification_service import classify_text
+from fastpaip_app.classifications.application.services import classify_text
 
 # 4. Import cross-domain application services
 
