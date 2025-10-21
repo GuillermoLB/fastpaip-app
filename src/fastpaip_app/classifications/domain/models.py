@@ -5,10 +5,8 @@ These models represent the core data structures and "Ubiquitous Language"
 for all business logic related to invoices. They act as the data contracts
 for services, repositories, and external interactions within this Bounded Context.
 """
-from datetime import datetime, timezone
-from typing import List, Optional
 from enum import Enum
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 class Category(str, Enum):
     GENERATED = "GENERATED"

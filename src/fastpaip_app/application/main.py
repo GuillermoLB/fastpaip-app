@@ -47,7 +47,7 @@ process_classification_func = partial(
     )
 
 # Build the domain-specific handlers
-sqs_invoice_handler = build_sqs_classification_handler(
+sqs_invoice_handler = build_classification_handler(
     repository=classification_repo,
     sqs_parser=parse_sqs_event
 )
