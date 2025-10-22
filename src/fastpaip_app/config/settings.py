@@ -31,7 +31,7 @@ class Settings(BaseSettings):
         case_sensitive=False,
     )
 
-    log_level: str
+    log_level: str = "DEBUG"
     pythonpath: str = "."
 
     # The attribute names here (aws, postgres) are the prefixes for the env vars

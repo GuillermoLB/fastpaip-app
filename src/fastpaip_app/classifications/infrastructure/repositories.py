@@ -28,8 +28,6 @@ class InMemoryClassificationRepository(ClassificationRepository):
             id=self._next_id,
             call_id=data.call_id,
             category=data.category,
-            confidence=data.confidence,
-            created_at=datetime.now()
         )
         
         # Store in the dictionary

@@ -5,18 +5,30 @@ These functions are pure, stateless, and decoupled from any infrastructure conce
 They operate solely on domain models and depend on abstract ports for any
 external interactions (like data persistence or API calls).
 """
-from .models import Classification, ClassificationCreate
+from .models import Category, Classification, ClassificationCreate
 from .ports import ClassificationRepository, LLMClassifier
 
+def classify_text(text: str, llm_classifier: LLMClassifier) -> Category:
+    """
+    Classifies the given text using the provided LLM classifier.
+
+    Args:
+        text (str): The text to classify.
+        llm_classifier (LLMClassifier): The LLM classifier to use.
+
+    Returns:
+        Classification: The classification result.
+    """
+    print("DOMAIN SERVICE: Executing 'classify_text' logic...")
+    classification_result = llm_classifier.classify(text)
+    return classification_result
 
 def create_classification(
     classification_data: ClassificationCreate,
     classification_repo: ClassificationRepository,
-    llm_classifier: LLMClassifier
 ) -> Classification:
 
     print("DOMAIN SERVICE: Executing 'create_classification' logic...")
-    classification = llm_classifier.classify(classification_data)
-    created_classification = classification_repo.create(classification)
+    created_classification = classification_repo.create(classification_data)
 
     return created_classification

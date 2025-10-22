@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-fastpaip-app = "fastpaip_app:main"
+fastpaip-app = "fastpaip_app.application.app:main"
 
 [build-system]
 requires = ["uv_build>=0.9.0,<0.10.0"]
