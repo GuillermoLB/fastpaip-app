@@ -3,6 +3,7 @@ from datetime import datetime
 
 from fastpaip_app.classifications.domain.ports import ClassificationRepository
 from fastpaip_app.classifications.domain.models import Classification, ClassificationCreate
+from plummy.protocols import CRUDRepository
 
 
 class InMemoryClassificationRepository(ClassificationRepository):
@@ -10,10 +11,10 @@ class InMemoryClassificationRepository(ClassificationRepository):
     In-memory implementation of ClassificationRepository using a dictionary.
     This is useful for testing or simple applications without a database.
     """
-    def __init__(self):
+    def __init__(self, classifications_dict: Optional[Dict[int, Classification]] = {}):
         # Initialize with an empty dictionary to store classifications
         # Key: classification ID, Value: Classification object
-        self._classifications: Dict[int, Classification] = {}
+        self._classifications: Dict[int, Classification] = classifications_dict
         # Auto-increment counter for ID generation
         self._next_id: int = 1
     

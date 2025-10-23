@@ -22,3 +22,13 @@ build-backend = "uv_build"
 
 [tool.uv.sources]
 plummy = { path = "./plummy" }
+
+# Add this pytest configuration
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]
