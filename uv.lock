@@ -6,8 +6,6 @@ requires-python = ">=3.12"
 members = [
     "core",
     "fastpaip-app",
-    "fastpaip-cloud",
-    "fastpaip-local",
     "plummy",
 ]
 
@@ -146,7 +144,6 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "core" },
-    { name = "fastpaip-local" },
     { name = "openai" },
     { name = "plummy" },
     { name = "pydantic-settings" },
@@ -155,21 +152,10 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "core", editable = "packages/core" },
-    { name = "fastpaip-local", editable = "packages/fastpaip-local" },
     { name = "openai", specifier = ">=2.6.1" },
     { name = "plummy", editable = "packages/plummy" },
     { name = "pydantic-settings", specifier = ">=2.11.0" },
 ]
-
-[[package]]
-name = "fastpaip-cloud"
-version = "0.1.0"
-source = { editable = "packages/fastpaip-cloud" }
-
-[[package]]
-name = "fastpaip-local"
-version = "0.1.0"
-source = { editable = "packages/fastpaip-local" }
 
 [[package]]
 name = "h11"

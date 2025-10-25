@@ -1,7 +1,7 @@
 from typing import Dict, List, Optional
 
-from fastpaip_local.classifications.domain.ports import ClassificationRepository
-from fastpaip_local.classifications.domain.models import Classification, ClassificationCreate
+from core.classifications.domain.ports import ClassificationRepository
+from core.classifications.domain.models import Classification, ClassificationCreate
 
 
 class InMemoryClassificationRepository(ClassificationRepository):

@@ -1,2 +1,4 @@
+
+
 def main() -> None:
-    print("Hello from core!")
+    print("Hello from fastpaip-app!")

@@ -1,7 +1,7 @@
 import openai
 
-from fastpaip_local.classifications.domain.models import Category
-from fastpaip_local.classifications.domain.ports import LLMClassifier
+from core.classifications.domain.models import Category
+from core.classifications.domain.ports import LLMClassifier
 
 
 class OpenAIClassifierGateway(LLMClassifier):
