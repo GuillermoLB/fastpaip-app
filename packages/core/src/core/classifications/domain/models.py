@@ -9,12 +9,15 @@ from enum import Enum
 from pydantic import BaseModel
 
 class Category(str, Enum):
-    GENERATED = "GENERATED"
-    ISSUED = "ISSUED"
+    COMMERCIAL = "COMMERCIAL"
+    FOLLOWING = "FOLLOWING"
+    
+class ClassificationCategory(BaseModel):
+    category: Category
 
 class ClassificationBase(BaseModel):
     call_id: str
-    category: Category
+    classification_category: ClassificationCategory
 
 class ClassificationCreate(ClassificationBase):
     pass

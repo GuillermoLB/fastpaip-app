@@ -26,7 +26,7 @@ class InMemoryClassificationRepository(ClassificationRepository):
         classification = Classification(
             id=self._next_id,
             call_id=data.call_id,
-            category=data.category,
+            classification_category=data.classification_category,
         )
         
         # Store in the dictionary

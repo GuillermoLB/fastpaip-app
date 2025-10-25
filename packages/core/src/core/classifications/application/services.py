@@ -16,10 +16,10 @@ def create_classification_service(event: Dict[str, Any], classification_repo: Cl
     Returns:
         A dictionary representing the classification result.
     """
-    category = classify_text(text=event["text"], llm_classifier=llm_classifier)
+    classification_category = classify_text(text=event["text"], llm_classifier=llm_classifier)
     classification_create = ClassificationCreate(
         call_id="1",
-        category=category
+        classification_category=classification_category
     )
     created_classification = create_classification(classification_data=classification_create, classification_repo=classification_repo)
     return created_classification
