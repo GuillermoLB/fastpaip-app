@@ -1,34 +1,28 @@
 [project]
 name = "fastpaip-app"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-authors = [
-    { name = "GuillermoLB", email = "guillelb99@gmail.com" }
-]
 requires-python = ">=3.12"
 dependencies = [
-    "openai>=2.6.0",
     "plummy",
+    "core",
+    "fastpaip-local",
     "pydantic-settings>=2.11.0",
+    "openai>=2.6.1",
 ]
-
-[project.scripts]
-fastpaip-app = "fastpaip_app.application.app:main"
-
-[build-system]
-requires = ["uv_build>=0.9.0,<0.10.0"]
-build-backend = "uv_build"
 
 [tool.uv.sources]
-plummy = { path = "./plummy" }
+plummy = { workspace = true }
+core = { workspace = true }
+fastpaip_local = { workspace = true }
 
-# Add this pytest configuration
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["."]
+[tool.uv.workspace]
+members = ["packages/*"]
 
-[dependency-groups]
-dev = [
-    "pytest>=8.4.2",
-]
+[project.scripts]
+fastpaip-app = "fastpaip_app:main"
+fastpaip-local = "fastpaip_local.application.app:main"
+plummy = "plummy:main"
+
+[build-system]
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"

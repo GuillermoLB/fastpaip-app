@@ -13,12 +13,12 @@ from plummy.handlers import StepHandler, Handler
 from plummy.adapters import FunctionalProcessor
 
 # 2. Import configuration and concrete infrastructure
-from fastpaip_app.classifications.infrastructure.gateways import OpenAIClassifierGateway
-from fastpaip_app.classifications.infrastructure.repositories import InMemoryClassificationRepository
-from fastpaip_app.config.settings import settings
+from fastpaip_local.classifications.infrastructure.gateways import OpenAIClassifierGateway
+from fastpaip_local.classifications.infrastructure.repositories import InMemoryClassificationRepository
+from fastpaip_local.config.settings import settings
 
 # 3. Import handler builders from each domain's application layer
-from fastpaip_app.classifications.application.services import create_classification_service
+from fastpaip_local.classifications.application.services import create_classification_service
 
 # 4. Import cross-domain application services
 

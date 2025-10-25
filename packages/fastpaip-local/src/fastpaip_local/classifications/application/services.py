@@ -1,7 +1,7 @@
 from typing import Any, Dict
-from fastpaip_app.classifications.domain.models import ClassificationCreate
-from fastpaip_app.classifications.domain.ports import ClassificationRepository, LLMClassifier
-from fastpaip_app.classifications.domain.services import classify_text, create_classification
+from fastpaip_local.classifications.domain.models import ClassificationCreate
+from fastpaip_local.classifications.domain.ports import ClassificationRepository, LLMClassifier
+from fastpaip_local.classifications.domain.services import classify_text, create_classification
     
 def can_handle_create_classification(event: Dict[str, Any]) -> bool:
     return event.get("type") == "newcall"

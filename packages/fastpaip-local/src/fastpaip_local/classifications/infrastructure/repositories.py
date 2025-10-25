@@ -1,9 +1,7 @@
 from typing import Dict, List, Optional
-from datetime import datetime
 
-from fastpaip_app.classifications.domain.ports import ClassificationRepository
-from fastpaip_app.classifications.domain.models import Classification, ClassificationCreate
-from plummy.protocols import CRUDRepository
+from fastpaip_local.classifications.domain.ports import ClassificationRepository
+from fastpaip_local.classifications.domain.models import Classification, ClassificationCreate
 
 
 class InMemoryClassificationRepository(ClassificationRepository):
