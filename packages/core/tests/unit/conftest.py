@@ -1,10 +1,9 @@
 from typing import Optional
 from unittest.mock import MagicMock
-from fastpaip_app.classifications.domain.ports import ClassificationRepository
+from core.classifications.domain.ports import ClassificationRepository
 import pytest
-from datetime import datetime, timezone
 
-from fastpaip_app.classifications.domain.models import Category, Classification, ClassificationCreate
+from core.classifications.domain.models import Category, Classification, ClassificationCategory, ClassificationCreate
 
 # ==============================================================================
 # 1. Mock Classes for Unit Tests
@@ -16,7 +15,7 @@ class MockClassificationRepository(ClassificationRepository):
     def get_by_id(self, id) -> Optional[Classification]:
         return Classification(
             call_id="1",
-            category=Category.GENERATED,
+            category=Category.COMMERCIAL,
             id=id
         )
     
@@ -26,7 +25,7 @@ class MockClassificationRepository(ClassificationRepository):
         
         return Classification(
             call_id="1",
-            category=Category.GENERATED,
+            category=Category.COMMERCIAL,
             id=id
         )
         
@@ -35,7 +34,7 @@ class MockClassificationRepository(ClassificationRepository):
         print("MOCK REPO: 'update' called.")
         return Classification(
             call_id="1",
-            category=Category.GENERATED,
+            category=Category.COMMERCIAL,
             id=id
         )
     
@@ -48,7 +47,7 @@ class MockClassificationRepository(ClassificationRepository):
         return [
             Classification(
                 call_id="1",
-                category=Category.GENERATED,
+                category=Category.COMMERCIAL,
                 id=id
             )
         ]
@@ -60,7 +59,7 @@ class MockOpenAIClassifierGateway:
     def classify(self, data: str) -> Category:
         """Simulates classifying text and returning a category."""
         print("MOCK GATEWAY: 'classify' called.")
-        return Category.GENERATED
+        return Category.COMMERCIAL
 
 # ==============================================================================
 # 2. Pytest Fixtures
@@ -86,12 +85,12 @@ def _classifications_dict() -> dict[int, Classification]:
         1: Classification(
             id=1,
             call_id="call_1",
-            category=Category.GENERATED,
+            classification_category=ClassificationCategory(category=Category.COMMERCIAL),
         ),
         2: Classification(
             id=2,
             call_id="call_2",
-            category=Category.GENERATED,
+            classification_category=ClassificationCategory(category=Category.COMMERCIAL),
         ),
     }
 

@@ -7,7 +7,9 @@ authors = [
     { name = "GuillermoLB", email = "guillelb99@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "fastapi>=0.120.0",
+]
 
 [project.scripts]
 local = "core.application.entrypoints.local:app"
@@ -15,3 +17,11 @@ local = "core.application.entrypoints.local:app"
 [build-system]
 requires = ["uv_build>=0.9.0,<0.10.0"]
 build-backend = "uv_build"
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.14.0",
+    "pytest>=7.0.0",
+    "pytest-mock>=3.0.0",
+    "pytest-cov>=4.0.0"
+]
