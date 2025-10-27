@@ -30,6 +30,15 @@ pythonpath = [
     "packages/plummy/src",
 ]
 
+[tool.coverage.run]
+omit = [
+    "tests/*",
+    "packages/core/tests/*",
+    "packages/plummy/tests/*",
+    "*/migrations/*",
+    # Add more patterns as needed
+]
+
 [project.optional-dependencies]
 dev = [
     "ruff>=0.14.0",
