@@ -18,7 +18,10 @@ class InMemoryClassificationRepository(ClassificationRepository):
     
     def get_by_id(self, id: int) -> Optional[Classification]:
         """Retrieve a classification by its ID."""
-        return self._classifications.get(id)
+        classification = self._classifications.get(id)
+        if classification is None:
+            raise ValueError(f"Classification with ID {id} not found")
+        return classification
     
     def create(self, data: ClassificationCreate) -> Classification:
         """Create a new classification with auto-generated ID."""
@@ -50,12 +53,18 @@ class InMemoryClassificationRepository(ClassificationRepository):
         """Delete a classification by ID."""
         if id in self._classifications:
             del self._classifications[id]
+        else:
+            raise ValueError(f"Classification with ID {id} not found")
     
     def find_by_call_id(self, call_id: str) -> List[Classification]:
         """Find all classifications for a specific call ID."""
-        return [
+        classifications = [
             classification 
             for classification in self._classifications.values()
             if classification.call_id == call_id
         ]
+    
+        if classifications == []:
+            raise ValueError(f"No classifications found for call ID {call_id}")
+        return classifications
 

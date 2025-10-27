@@ -194,13 +194,26 @@ dependencies = [
     { name = "pydantic-settings" },
 ]
 
+[package.optional-dependencies]
+dev = [
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "pytest-mock" },
+    { name = "ruff" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "core", editable = "packages/core" },
     { name = "openai", specifier = ">=2.6.1" },
     { name = "plummy", editable = "packages/plummy" },
     { name = "pydantic-settings", specifier = ">=2.11.0" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0.0" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0.0" },
+    { name = "pytest-mock", marker = "extra == 'dev'", specifier = ">=3.0.0" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.14.0" },
 ]
+provides-extras = ["dev"]
 
 [[package]]
 name = "h11"

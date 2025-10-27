@@ -75,7 +75,7 @@ def _openai_classifier_gateway_fixture() -> MockOpenAIClassifierGateway:
     """Provides a mock Anfix gateway for invoicing unit tests."""
     return MockOpenAIClassifierGateway()
 
-@pytest.fixture(name="classifications_dict")
+@pytest.fixture(name="classifications_dict", scope="function")
 def _classifications_dict() -> dict[int, Classification]:
     """
     Provides a mock classifications dictionary for testing the

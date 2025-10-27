@@ -1,3 +1,5 @@
+import pytest
+
 from core.classifications.domain.models import ClassificationCreate
 from core.classifications.infrastructure.repositories import InMemoryClassificationRepository
 
@@ -30,5 +32,5 @@ def test_in_memory_classification_repository_update_classification(classificatio
 def test_in_memory_classification_repository_delete_classification(classifications_dict):
     repo = InMemoryClassificationRepository(classifications_dict)
     repo.delete(1)
-    classification = repo.get_by_id(1)
-    assert classification is None
+    with pytest.raises(ValueError):
+        repo.get_by_id(1)
