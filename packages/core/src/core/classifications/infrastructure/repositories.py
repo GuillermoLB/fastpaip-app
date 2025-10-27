@@ -42,12 +42,11 @@ class InMemoryClassificationRepository(ClassificationRepository):
     
     def update(self, classification: Classification) -> Classification:
         """Update an existing classification."""
-        if classification.id not in self._classifications:
-            raise ValueError(f"Classification with ID {classification.id} not found")
+        existing_classification = self.get_by_id(classification.id)  # Ensure it exists
         
         # Store updated classification
-        self._classifications[classification.id] = classification
-        return classification
+        existing_classification = classification
+        return existing_classification
     
     def delete(self, id: int) -> None:
         """Delete a classification by ID."""
