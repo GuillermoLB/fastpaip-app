@@ -50,10 +50,7 @@ class InMemoryClassificationRepository(ClassificationRepository):
     
     def delete(self, id: int) -> None:
         """Delete a classification by ID."""
-        if id in self._classifications:
-            del self._classifications[id]
-        else:
-            raise ValueError(f"Classification with ID {id} not found")
+        del self._classifications[id]
     
     def find_by_call_id(self, call_id: str) -> List[Classification]:
         """Find all classifications for a specific call ID."""
