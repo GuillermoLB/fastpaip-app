@@ -36,6 +36,9 @@ omit = [
     "packages/core/tests/*",
     "packages/plummy/tests/*",
     "*/migrations/*",
+    "**/__init__.py",           # Exclude all __init__.py files
+    "**/entrypoints/*",         # Exclude all files in any entrypoints/ folder
+    "**/entrypoints.py",        # Exclude any file named entrypoints.py
     # Add more patterns as needed
 ]
 
