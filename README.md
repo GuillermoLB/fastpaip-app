@@ -5,6 +5,7 @@
 
 `fastpaip-app` is a modern Python application designed to process events using a modular pipeline architecture, powered by AI.
 
+
 ## Project Structure
 
 This project is structured as a monorepo using a `uv` workspace. The core logic and framework components are separated into distinct packages for better organization and reusability.
