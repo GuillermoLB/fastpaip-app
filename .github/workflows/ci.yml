@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  OPENAI_API__API_KEY: ${{ secrets.OPENAI_API__API_KEY }}
+
 jobs:
   build:
     name: continuous-integration
