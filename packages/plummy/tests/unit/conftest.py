@@ -12,8 +12,8 @@ import pytest
 # ==============================================================================
 
 
-@pytest.fixture(name="mock_pipeline")
-def _mock_pipeline_fixture(mocker) -> MagicMock:
+@pytest.fixture(name="pipeline")
+def _pipeline_fixture(mocker) -> MagicMock:
     """
     A fixture that mocks the entire 'pipeline_start' object from the main module.
 
@@ -24,16 +24,16 @@ def _mock_pipeline_fixture(mocker) -> MagicMock:
     """
     return mocker.patch("plummy.main.pipeline_start")
 
-@pytest.fixture
-def mock_processor() -> MagicMock:
+@pytest.fixture(name="processor")
+def _processor_fixture() -> MagicMock:
     """
     Provides a mock 'Processable' component.
     (Simulates a FunctionalProcessor in a real scenario).
     """
     return MagicMock()
 
-@pytest.fixture
-def mock_handler() -> MagicMock:
+@pytest.fixture(name="handler")
+def _handler_fixture() -> MagicMock:
     """
     Provides a generic mock 'Handler' for chaining.
     (Simulates another StepHandler instance in a real scenario).

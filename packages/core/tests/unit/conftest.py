@@ -9,48 +9,48 @@ from core.classifications.domain.models import Category, Classification, Classif
 # 1. Mock Classes for Unit Tests
 # ==============================================================================
 
-class MockClassificationRepository(ClassificationRepository):
-    """A fake repository that simulates database behavior for unit tests."""
+# class MockClassificationRepository(ClassificationRepository):
+#     """A fake repository that simulates database behavior for unit tests."""
     
-    def get_by_id(self, id) -> Optional[Classification]:
-        return Classification(
-            call_id="1",
-            category=Category.COMMERCIAL,
-            id=id
-        )
+#     def get_by_id(self, id) -> Optional[Classification]:
+#         return Classification(
+#             call_id="1",
+#             category=Category.COMMERCIAL,
+#             id=id
+#         )
     
-    def create(self, invoice_data: ClassificationCreate, external_ref: str) -> Classification:
-        """Simulates creating an invoice and returning the full entity."""
-        print("MOCK REPO: 'create' called.")
+#     def create(self, invoice_data: ClassificationCreate, external_ref: str) -> Classification:
+#         """Simulates creating an invoice and returning the full entity."""
+#         print("MOCK REPO: 'create' called.")
         
-        return Classification(
-            call_id="1",
-            category=Category.COMMERCIAL,
-            id=id
-        )
+#         return Classification(
+#             call_id="1",
+#             category=Category.COMMERCIAL,
+#             id=id
+#         )
         
-    def update(self, classification: Classification) -> Classification:
-        """Simulates updating an invoice in the database."""
-        print("MOCK REPO: 'update' called.")
-        return Classification(
-            call_id="1",
-            category=Category.COMMERCIAL,
-            id=id
-        )
+#     def update(self, classification: Classification) -> Classification:
+#         """Simulates updating an invoice in the database."""
+#         print("MOCK REPO: 'update' called.")
+#         return Classification(
+#             call_id="1",
+#             category=Category.COMMERCIAL,
+#             id=id
+#         )
     
-    def delete(self, id: int) -> None:
-        """Simulates deleting an invoice from the database."""
-        print("MOCK REPO: 'delete' called.")
-        pass
+#     def delete(self, id: int) -> None:
+#         """Simulates deleting an invoice from the database."""
+#         print("MOCK REPO: 'delete' called.")
+#         pass
     
-    def find_by_call_id(self, call_id) -> list[Classification]:
-        return [
-            Classification(
-                call_id="1",
-                category=Category.COMMERCIAL,
-                id=id
-            )
-        ]
+#     def find_by_call_id(self, call_id) -> list[Classification]:
+#         return [
+#             Classification(
+#                 call_id="1",
+#                 category=Category.COMMERCIAL,
+#                 id=id
+#             )
+#         ]
     
 
 class MockOpenAIClassifierGateway:
@@ -66,9 +66,9 @@ class MockOpenAIClassifierGateway:
 # ==============================================================================
 
 @pytest.fixture(name="classification_repo")
-def _classification_repo_fixture() -> MockClassificationRepository:
+def _classification_repo_fixture() -> MagicMock:
     """Provides a mock invoice repository for invoicing unit tests."""
-    return MockClassificationRepository()
+    return MagicMock()
 
 @pytest.fixture(name="anfix_gateway")
 def _openai_classifier_gateway_fixture() -> MockOpenAIClassifierGateway:
@@ -93,9 +93,17 @@ def _classifications_dict() -> dict[int, Classification]:
             classification_category=ClassificationCategory(category=Category.COMMERCIAL),
         ),
     }
+    
+@pytest.fixture(name="llm_classifier")
+def _llm_classifier_fixture() -> MagicMock:
+    """
+    Provides a mock LLMClassifier component.
+    (Simulates a real LLMClassifier in a real scenario).
+    """
+    return MagicMock()
 
-@pytest.fixture()
-def mock_pipeline_fixture(mocker) -> MagicMock:
+@pytest.fixture(name="pipeline")
+def _pipeline_fixture(mocker) -> MagicMock:
     """
     A fixture that mocks the entire 'pipeline_start' object from the main module.
 
@@ -106,16 +114,16 @@ def mock_pipeline_fixture(mocker) -> MagicMock:
     """
     return mocker.patch("fastpaip_app.application.main.pipeline_start")
 
-@pytest.fixture
-def mock_processor() -> MagicMock:
+@pytest.fixture(name="processor")
+def _processor_fixture() -> MagicMock:
     """
     Provides a mock 'Processable' component.
     (Simulates a FunctionalProcessor in a real scenario).
     """
     return MagicMock()
 
-@pytest.fixture
-def mock_handler() -> MagicMock:
+@pytest.fixture(name="handler")
+def _handler_fixture() -> MagicMock:
     """
     Provides a generic mock 'Handler' for chaining.
     (Simulates another StepHandler instance in a real scenario).
